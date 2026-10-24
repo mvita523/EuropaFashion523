@@ -16,8 +16,25 @@ const porId = (id) => PRODUTOS.find((p) => p.id === id);
 // ---------- Catálogo ----------
 const grelha = document.getElementById("grelha");
 
-function desenharCatalogo(filtro) {
-  const lista = filtro === "todos" ? PRODUTOS : PRODUTOS.filter((p) => p.genero === filtro);
+let filtroAtual = "todos";
+let termoPesquisa = "";
+
+// Pesquisa sem distinguir maiúsculas nem acentos.
+const normalizar = (t) => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const textoPesquisavel = (p) =>
+  normalizar([p.nome, p.marca, p.tipo, p.familia, p.descricao, p.notas && Object.values(p.notas).join(" ")].join(" "));
+
+function desenharCatalogo() {
+  const palavras = normalizar(termoPesquisa).split(/\s+/).filter(Boolean);
+  const lista = PRODUTOS.filter(
+    (p) =>
+      (filtroAtual === "todos" || p.genero === filtroAtual) &&
+      palavras.every((w) => textoPesquisavel(p).includes(w))
+  );
+  if (!lista.length) {
+    grelha.innerHTML = `<p class="sem-resultados">Nenhum produto encontrado. Experimente outro nome ou fale connosco pelo WhatsApp.</p>`;
+    return;
+  }
   grelha.innerHTML = lista
     .map(
       (p) => `
@@ -45,7 +62,8 @@ document.querySelector(".filtros").addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b) return;
   document.querySelectorAll(".filtros button").forEach((x) => x.classList.toggle("ativo", x === b));
-  desenharCatalogo(b.dataset.filtro);
+  filtroAtual = b.dataset.filtro;
+  desenharCatalogo();
 });
 
 grelha.addEventListener("click", (e) => {
@@ -184,5 +202,10 @@ document.getElementById("abrirCarrinho").addEventListener("click", abrirPainel);
 document.getElementById("fecharCarrinho").addEventListener("click", fecharPainel);
 sombra.addEventListener("click", fecharPainel);
 
-desenharCatalogo("todos");
+document.getElementById("pesquisa").addEventListener("input", (e) => {
+  termoPesquisa = e.target.value;
+  desenharCatalogo();
+});
+
+desenharCatalogo();
 desenharPedido();
