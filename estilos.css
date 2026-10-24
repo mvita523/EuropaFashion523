@@ -151,3 +151,5 @@ dialog::backdrop { background: rgba(0,0,0,.6); }
 .politicas section { background: var(--branco); border: 1px solid var(--linha); padding: 1.2rem 1.4rem; margin: 1rem 0; }
 .politicas h2 { font-size: 1.5rem; }
 .politicas p { margin: .4rem 0; }
+.escaloes { list-style: none; padding: 0; margin: .6rem auto; max-width: 30rem; }
+.escaloes li { padding: .35rem 0; border-bottom: 1px solid var(--linha); }

@@ -2,14 +2,15 @@
 
 const WHATSAPP = "244929005501";
 const MIN_REVENDA = 10;       // unidades do mesmo perfume
-const DESCONTO_REVENDA = 8000; // Kz por unidade
+// Desconto de revenda por unidade, conforme o preço do perfume.
+const descontoRevenda = (p) => (p.preco <= 30000 ? 5000 : p.preco <= 40000 ? 6000 : 8000);
 
 const GENEROS = { feminino: "Feminino", masculino: "Masculino", corpo: "Cuidados do corpo" };
 
 const kz = (v) => v.toLocaleString("pt-PT").replace(/\s/g, ".") + " Kz";
 // A regra de revenda aplica-se só a perfumes, não a produtos de corpo.
 const temRevenda = (p) => p.genero !== "corpo";
-const precoUnitario = (p, qtd) => (temRevenda(p) && qtd >= MIN_REVENDA ? p.preco - DESCONTO_REVENDA : p.preco);
+const precoUnitario = (p, qtd) => (temRevenda(p) && qtd >= MIN_REVENDA ? p.preco - descontoRevenda(p) : p.preco);
 const porId = (id) => PRODUTOS.find((p) => p.id === id);
 
 // ---------- Catálogo ----------
@@ -29,7 +30,7 @@ function desenharCatalogo(filtro) {
         <h3>${p.nome}</h3>
         <span class="etiqueta">${p.genero ? GENEROS[p.genero] : "Género por confirmar"}${p.tamanho ? ` · ${p.tamanho}` : ""}</span>
         <span class="preco">${kz(p.preco)}</span>
-        ${temRevenda(p) ? `<span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - DESCONTO_REVENDA)}</span>` : ""}
+        ${temRevenda(p) ? `<span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - descontoRevenda(p))}</span>` : ""}
         <div class="cartao-acoes">
           <button data-ver="${p.id}">Detalhes</button>
           <button class="adicionar" data-adicionar="${p.id}">Adicionar</button>
@@ -83,7 +84,7 @@ function abrirDetalhe(id) {
         ${descricao}
         <dl>${linhas.join("")}</dl>
         <p class="preco">${kz(p.preco)}</p>
-        ${temRevenda(p) ? `<p class="preco-revenda">Revenda (10 ou mais unidades): ${kz(p.preco - DESCONTO_REVENDA)} por unidade</p>` : ""}
+        ${temRevenda(p) ? `<p class="preco-revenda">Revenda (10 ou mais unidades): ${kz(p.preco - descontoRevenda(p))} por unidade</p>` : ""}
         <div class="cartao-acoes"><button class="adicionar" data-adicionar="${p.id}">Adicionar ao pedido</button></div>
         ${p.fonte ? `<p class="fonte">Fonte da descrição: <a href="${p.fonte}" target="_blank" rel="noopener">${new URL(p.fonte).hostname}</a></p>` : ""}
       </div>
@@ -135,7 +136,7 @@ function desenharPedido() {
           <div class="item-nome">${p.nome}</div>
           <div class="item-preco">${kz(u)} × ${q} = ${kz(u * q)}</div>
           ${!temRevenda(p) ? "" : q >= MIN_REVENDA
-            ? `<div class="item-revenda">Preço de revendedor aplicado (−${kz(DESCONTO_REVENDA)}/un.)</div>`
+            ? `<div class="item-revenda">Preço de revendedor aplicado (−${kz(descontoRevenda(p))}/un.)</div>`
             : `<div class="item-preco">Faltam ${faltam} un. para o preço de revendedor</div>`}
           <div class="qtd">
             <button data-menos="${id}" aria-label="Menos">−</button>
