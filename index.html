@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilos.css?v=10">
+<link rel="stylesheet" href="estilos.css?v=11">
 </head>
 <body>
 
@@ -40,12 +40,12 @@
 <main id="catalogo" class="catalogo">
   <div class="catalogo-cabecalho">
     <h2>Catálogo</h2>
-    <input type="search" id="pesquisa" class="pesquisa" placeholder="Pesquisar perfume, marca ou nota…" aria-label="Pesquisar perfumes">
+    <input type="search" id="pesquisa" class="pesquisa" placeholder="Pesquisar perfumes…" aria-label="Pesquisar perfumes">
     <div class="filtros" role="tablist">
       <button class="ativo" data-filtro="todos">Todos</button>
       <button data-filtro="feminino">Femininos</button>
       <button data-filtro="masculino">Masculinos</button>
-      <button data-filtro="corpo">Cuidados do corpo</button>
+      <button data-filtro="corpo"><span class="so-desktop">Cuidados do corpo</span><span class="so-movel">Corpo</span></button>
     </div>
   </div>
   <div class="grelha" id="grelha"></div>
@@ -108,7 +108,7 @@
 </aside>
 <div class="sombra" id="sombra"></div>
 
-<script src="produtos.js?v=10"></script>
-<script src="loja.js?v=10"></script>
+<script src="produtos.js?v=11"></script>
+<script src="loja.js?v=11"></script>
 </body>
 </html>

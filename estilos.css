@@ -163,3 +163,32 @@ dialog::backdrop { background: rgba(0,0,0,.6); }
 .pedido-especial h3 { font-size: 1.7rem; }
 .pedido-especial p { margin: .3rem auto 1.2rem; max-width: 34rem; }
 .pedido-especial .btn-whats { width: auto; }
+
+/* Correções para telemóvel / iPhone (Safari pinta os botões de azul por defeito) */
+button, input { -webkit-appearance: none; appearance: none; border-radius: 0; color: var(--preto); }
+.filtros button { color: var(--preto); }
+.filtros button.ativo, .cartao-acoes .adicionar, .btn { color: var(--branco); }
+.btn-carrinho { color: var(--preto); }
+.topo, .destaque { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+
+@media (max-width: 720px) {
+  .catalogo { padding-top: 2rem; }
+  .catalogo-cabecalho { flex-direction: column; align-items: stretch; gap: .8rem; min-width: 0; }
+  .catalogo-cabecalho > * { min-width: 0; max-width: 100%; }
+  .catalogo { overflow-x: clip; }
+  .catalogo h2 { font-size: 2rem; }
+  .pesquisa { flex: none; font-size: 16px; padding: .7rem .9rem; } /* 16px evita o zoom automático do iPhone */
+  .filtros {
+    flex-wrap: nowrap; overflow-x: auto; gap: .4rem; padding-bottom: .2rem;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .filtros::-webkit-scrollbar { display: none; }
+  .filtros button { flex: none; padding: .5rem .9rem; font-size: .9rem; white-space: nowrap; border-radius: 999px; }
+  .cartao-corpo { padding: .7rem .7rem .8rem; }
+  .cartao-marca { font-size: .68rem; }
+  .preco { font-size: 1.05rem; }
+  .preco-revenda { font-size: .72rem; }
+  .cartao-acoes button { padding: .5rem; font-size: .82rem; }
+}
+.so-movel { display: none; }
+@media (max-width: 720px) { .so-desktop { display: none; } .so-movel { display: inline; } }
