@@ -159,3 +159,7 @@ dialog::backdrop { background: rgba(0,0,0,.6); }
 }
 .sem-resultados { grid-column: 1 / -1; text-align: center; color: var(--cinza); padding: 2rem 0; }
 @media (max-width: 720px) { .pesquisa { max-width: none; width: 100%; } }
+.pedido-especial { margin-top: 2.5rem; padding: 2rem 1.5rem; text-align: center; background: var(--branco); border: 1px solid var(--dourado); }
+.pedido-especial h3 { font-size: 1.7rem; }
+.pedido-especial p { margin: .3rem auto 1.2rem; max-width: 34rem; }
+.pedido-especial .btn-whats { width: auto; }

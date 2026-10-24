@@ -32,7 +32,7 @@ function desenharCatalogo() {
       palavras.every((w) => textoPesquisavel(p).includes(w))
   );
   if (!lista.length) {
-    grelha.innerHTML = `<p class="sem-resultados">Nenhum produto encontrado. Experimente outro nome ou fale connosco pelo WhatsApp.</p>`;
+    grelha.innerHTML = `<p class="sem-resultados">Nenhum produto encontrado. Não encontrou o perfume que procura? <a href="https://wa.me/244929005501" target="_blank" rel="noopener">Fale connosco pelo WhatsApp</a>: faremos o possível para trazer até si o perfume que deseja.</p>`;
     return;
   }
   grelha.innerHTML = lista
