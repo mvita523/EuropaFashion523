@@ -7,7 +7,9 @@ const DESCONTO_REVENDA = 8000; // Kz por unidade
 const GENEROS = { feminino: "Feminino", masculino: "Masculino", corpo: "Cuidados do corpo" };
 
 const kz = (v) => v.toLocaleString("pt-PT").replace(/\s/g, ".") + " Kz";
-const precoUnitario = (p, qtd) => (qtd >= MIN_REVENDA ? p.preco - DESCONTO_REVENDA : p.preco);
+// A regra de revenda aplica-se só a perfumes, não a produtos de corpo.
+const temRevenda = (p) => p.genero !== "corpo";
+const precoUnitario = (p, qtd) => (temRevenda(p) && qtd >= MIN_REVENDA ? p.preco - DESCONTO_REVENDA : p.preco);
 const porId = (id) => PRODUTOS.find((p) => p.id === id);
 
 // ---------- Catálogo ----------
@@ -27,7 +29,7 @@ function desenharCatalogo(filtro) {
         <h3>${p.nome}</h3>
         <span class="etiqueta">${p.genero ? GENEROS[p.genero] : "Género por confirmar"}</span>
         <span class="preco">${kz(p.preco)}</span>
-        <span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - DESCONTO_REVENDA)}</span>
+        ${temRevenda(p) ? `<span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - DESCONTO_REVENDA)}</span>` : ""}
         <div class="cartao-acoes">
           <button data-ver="${p.id}">Detalhes</button>
           <button class="adicionar" data-adicionar="${p.id}">Adicionar</button>
@@ -80,7 +82,7 @@ function abrirDetalhe(id) {
         ${descricao}
         <dl>${linhas.join("")}</dl>
         <p class="preco">${kz(p.preco)}</p>
-        <p class="preco-revenda">Revenda (10 ou mais unidades): ${kz(p.preco - DESCONTO_REVENDA)} por unidade</p>
+        ${temRevenda(p) ? `<p class="preco-revenda">Revenda (10 ou mais unidades): ${kz(p.preco - DESCONTO_REVENDA)} por unidade</p>` : ""}
         <div class="cartao-acoes"><button class="adicionar" data-adicionar="${p.id}">Adicionar ao pedido</button></div>
         ${p.fonte ? `<p class="fonte">Fonte da descrição: <a href="${p.fonte}" target="_blank" rel="noopener">${new URL(p.fonte).hostname}</a></p>` : ""}
       </div>
@@ -131,7 +133,7 @@ function desenharPedido() {
         <div>
           <div class="item-nome">${p.nome}</div>
           <div class="item-preco">${kz(u)} × ${q} = ${kz(u * q)}</div>
-          ${q >= MIN_REVENDA
+          ${!temRevenda(p) ? "" : q >= MIN_REVENDA
             ? `<div class="item-revenda">Preço de revendedor aplicado (−${kz(DESCONTO_REVENDA)}/un.)</div>`
             : `<div class="item-preco">Faltam ${faltam} un. para o preço de revendedor</div>`}
           <div class="qtd">
@@ -166,7 +168,7 @@ document.getElementById("enviarPedido").addEventListener("click", () => {
   const linhas = ids.map((id) => {
     const p = porId(id), q = pedido[id], u = precoUnitario(p, q);
     total += u * q;
-    return `• ${q} × ${p.nome} (${p.marca}) — ${kz(u)}/un.${q >= MIN_REVENDA ? " [revendedor]" : ""} = ${kz(u * q)}`;
+    return `• ${q} × ${p.nome} (${p.marca}) — ${kz(u)}/un.${u < p.preco ? " [revendedor]" : ""} = ${kz(u * q)}`;
   });
   const texto = `Olá EuropaFashion! Gostaria de fazer este pedido:\n\n${linhas.join("\n")}\n\nTotal: ${kz(total)}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank");

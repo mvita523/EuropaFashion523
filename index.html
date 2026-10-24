@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="estilos.css?v=3">
 </head>
 <body>
 
@@ -19,6 +19,7 @@
     <a href="#catalogo">Catálogo</a>
     <a href="#revendedores">Revendedores</a>
     <a href="#contactos">Contactos</a>
+    <a href="politicas.html">Políticas</a>
   </nav>
   <button class="btn-carrinho" id="abrirCarrinho" aria-label="Abrir pedido">Pedido <span id="contador">0</span></button>
 </header>
@@ -51,6 +52,7 @@
 <section id="revendedores" class="revenda">
   <h2>Preço para revendedores</h2>
   <p>Na compra de <strong>10 unidades ou mais do mesmo perfume</strong>, cada unidade fica <strong>8.000 Kz mais barata</strong>.</p>
+  <p>Esta regra não se aplica aos produtos de cuidados do corpo.</p>
   <p class="exemplo">Exemplo: um perfume de 40.000 Kz passa a 32.000 Kz por unidade. 10 unidades = 320.000 Kz.</p>
   <p>O desconto é calculado automaticamente no seu pedido.</p>
 </section>
@@ -66,6 +68,10 @@
     <h2>Redes sociais</h2>
     <p><a href="https://www.tiktok.com/@maria.vita523?_r=1&_t=ZS-9Apds10bwgr" target="_blank" rel="noopener">TikTok</a></p>
     <p><a href="https://www.facebook.com/share/19UxgAJNhX/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></p>
+  </div>
+  <div>
+    <h2>Informações</h2>
+    <p><a href="politicas.html">Políticas e privacidade</a></p>
   </div>
   <p class="copy">© EuropaFashion</p>
 </footer>
@@ -83,12 +89,12 @@
   <div class="painel-fim">
     <p class="total">Total: <strong id="total">0 Kz</strong></p>
     <button class="btn btn-whats" id="enviarPedido">Enviar pedido pelo WhatsApp</button>
-    <p class="nota">O pedido é enviado para o nosso WhatsApp (929 005 501) para confirmação.</p>
+    <p class="nota">O pedido é enviado para o nosso WhatsApp (929 005 501) para confirmação. Consulte as <a href="politicas.html">políticas de pagamento e entrega</a>.</p>
   </div>
 </aside>
 <div class="sombra" id="sombra"></div>
 
-<script src="produtos.js"></script>
-<script src="loja.js"></script>
+<script src="produtos.js?v=3"></script>
+<script src="loja.js?v=3"></script>
 </body>
 </html>
