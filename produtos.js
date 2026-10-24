@@ -356,7 +356,7 @@ const PRODUTOS = [
     marca: "O Boticário",
     tipo: "Óleo corporal",
     genero: "corpo",
-    preco: 50000,
+    preco: 20000,
     imagem: "imagens/nativa-spa-acai.jpg",
     familia: null,
     descricao:
