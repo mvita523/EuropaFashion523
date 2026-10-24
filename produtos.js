@@ -168,7 +168,7 @@ const PRODUTOS = [
   },
   {
     id: "cherry-stain-02",
-    tamanho: null,
+    tamanho: "100 ml",
     nome: "Cherry Stain 02 · Bold Dark Exotic",
     marca: "Zara",
     tipo: null,
@@ -332,7 +332,7 @@ const PRODUTOS = [
   },
   {
     id: "zara-frasco-dourado",
-    tamanho: null,
+    tamanho: "80 ml",
     nome: "Perfume Zara (frasco dourado com corrente)",
     marca: "Zara",
     tipo: null,
