@@ -27,7 +27,7 @@ function desenharCatalogo(filtro) {
       <div class="cartao-corpo">
         <span class="cartao-marca">${p.marca}</span>
         <h3>${p.nome}</h3>
-        <span class="etiqueta">${p.genero ? GENEROS[p.genero] : "Género por confirmar"}</span>
+        <span class="etiqueta">${p.genero ? GENEROS[p.genero] : "Género por confirmar"}${p.tamanho ? ` · ${p.tamanho}` : ""}</span>
         <span class="preco">${kz(p.preco)}</span>
         ${temRevenda(p) ? `<span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - DESCONTO_REVENDA)}</span>` : ""}
         <div class="cartao-acoes">
@@ -61,6 +61,7 @@ function abrirDetalhe(id) {
   const p = porId(id);
   const linhas = [];
   if (p.tipo) linhas.push(`<dt>Tipo</dt><dd>${p.tipo}</dd>`);
+  linhas.push(`<dt>Tamanho</dt><dd>${p.tamanho || "Por confirmar"}</dd>`);
   linhas.push(`<dt>Categoria</dt><dd>${p.genero ? GENEROS[p.genero] : "Por confirmar"}</dd>`);
   if (p.familia) linhas.push(`<dt>Família olfativa</dt><dd>${p.familia}</dd>`);
   if (p.notas) {

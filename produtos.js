@@ -3,11 +3,13 @@
 // Descrições traduzidas das fontes indicadas em "fonte". Quando não foi
 // possível confirmar uma informação, o campo fica vazio e o site diz isso.
 //
+// tamanho: volume em ml, confirmado nas páginas oficiais da Zara / O Boticário; null = por confirmar.
 // genero: "feminino" | "masculino" | "corpo" | null (não confirmado)
 
 const PRODUTOS = [
   {
     id: "cocoa-sunset",
+    tamanho: "100 ml",
     nome: "Cocoa Sunset",
     marca: "Zara",
     tipo: "Eau de Parfum",
@@ -22,6 +24,7 @@ const PRODUTOS = [
   },
   {
     id: "golden-decade",
+    tamanho: "80 ml",
     nome: "Golden Decade",
     marca: "Zara",
     tipo: "Eau de Parfum",
@@ -36,6 +39,7 @@ const PRODUTOS = [
   },
   {
     id: "hypnotic-vanilla",
+    tamanho: "80 ml",
     nome: "Hypnotic Vanilla",
     marca: "Zara",
     tipo: "Eau de Parfum",
@@ -50,6 +54,7 @@ const PRODUTOS = [
   },
   {
     id: "sassy-cranberry",
+    tamanho: "100 ml",
     nome: "Sassy Cranberry",
     marca: "Zara",
     tipo: "Eau de Parfum",
@@ -64,6 +69,7 @@ const PRODUTOS = [
   },
   {
     id: "applejuice-crush",
+    tamanho: "90 ml",
     nome: "Applejuice Crush",
     marca: "Zara · Crush Collection",
     tipo: "Eau de Parfum",
@@ -78,6 +84,7 @@ const PRODUTOS = [
   },
   {
     id: "egeo-dolce",
+    tamanho: "90 ml",
     nome: "Egeo Dolce",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -95,6 +102,7 @@ const PRODUTOS = [
   },
   {
     id: "egeo-choc",
+    tamanho: "90 ml",
     nome: "Egeo Choc",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -112,6 +120,7 @@ const PRODUTOS = [
   },
   {
     id: "african-sunrise-feminino",
+    tamanho: "75 ml",
     nome: "Botica 214 African Sunrise (Feminino)",
     marca: "O Boticário",
     tipo: "Eau de Parfum",
@@ -126,6 +135,7 @@ const PRODUTOS = [
   },
   {
     id: "african-sunrise-masculino",
+    tamanho: "90 ml",
     nome: "Botica 214 African Sunrise (Masculino)",
     marca: "O Boticário",
     tipo: "Eau de Parfum",
@@ -140,6 +150,7 @@ const PRODUTOS = [
   },
   {
     id: "sevilla-dorada-masculino",
+    tamanho: "90 ml",
     nome: "Botica 214 Sevilla Dorada (Masculino)",
     marca: "O Boticário",
     tipo: "Eau de Parfum",
@@ -157,6 +168,7 @@ const PRODUTOS = [
   },
   {
     id: "cherry-stain-02",
+    tamanho: null,
     nome: "Cherry Stain 02 · Bold Dark Exotic",
     marca: "Zara",
     tipo: null,
@@ -171,6 +183,7 @@ const PRODUTOS = [
   },
   {
     id: "tobacco-intense-dark",
+    tamanho: "100 ml",
     nome: "#Tobacco Collection · Intense Dark Exclusive",
     marca: "Zara · Heritage Selection",
     tipo: "Eau de Toilette",
@@ -188,6 +201,7 @@ const PRODUTOS = [
   },
   {
     id: "malbec",
+    tamanho: "100 ml",
     nome: "Malbec",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -205,6 +219,7 @@ const PRODUTOS = [
   },
   {
     id: "malbec-black",
+    tamanho: "100 ml",
     nome: "Malbec Black",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -219,6 +234,7 @@ const PRODUTOS = [
   },
   {
     id: "malbec-gold",
+    tamanho: "100 ml",
     nome: "Malbec Gold",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -236,6 +252,7 @@ const PRODUTOS = [
   },
   {
     id: "malbec-magnetic",
+    tamanho: "100 ml",
     nome: "Malbec Magnetic",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -253,6 +270,7 @@ const PRODUTOS = [
   },
   {
     id: "malbec-flame",
+    tamanho: "100 ml",
     nome: "Malbec Flame",
     marca: "O Boticário",
     tipo: "Desodorante Colónia",
@@ -270,6 +288,7 @@ const PRODUTOS = [
   },
   {
     id: "zaad-arctic",
+    tamanho: "95 ml",
     nome: "Zaad Arctic",
     marca: "O Boticário",
     tipo: "Eau de Parfum",
@@ -284,6 +303,7 @@ const PRODUTOS = [
   },
   {
     id: "sand-desert-at-sunset-intense",
+    tamanho: "100 ml",
     nome: "Sand Desert at Sunset Intense",
     marca: "Zara",
     tipo: "Eau de Parfum",
@@ -298,6 +318,7 @@ const PRODUTOS = [
   },
   {
     id: "temptation-classic-elixir",
+    tamanho: "80 ml",
     nome: "Zara Temptation Classic Elixir",
     marca: "Zara",
     tipo: "Parfum",
@@ -311,6 +332,7 @@ const PRODUTOS = [
   },
   {
     id: "zara-frasco-dourado",
+    tamanho: null,
     nome: "Perfume Zara (frasco dourado com corrente)",
     marca: "Zara",
     tipo: null,
@@ -324,6 +346,7 @@ const PRODUTOS = [
   },
   {
     id: "nativa-spa-quinoa",
+    tamanho: "200 ml",
     nome: "Nativa SPA Quinoa · Óleo Glorioso Hidratante Corporal 200 ml",
     marca: "O Boticário",
     tipo: "Óleo corporal",
@@ -338,6 +361,7 @@ const PRODUTOS = [
   },
   {
     id: "nativa-spa-ameixa",
+    tamanho: "200 ml",
     nome: "Nativa SPA Ameixa · Óleo Hidratante Corporal 200 ml",
     marca: "O Boticário",
     tipo: "Óleo corporal",
@@ -352,6 +376,7 @@ const PRODUTOS = [
   },
   {
     id: "nativa-spa-acai",
+    tamanho: "200 ml",
     nome: "Nativa SPA Açaí · Óleo Hidratante Corporal 200 ml",
     marca: "O Boticário",
     tipo: "Óleo corporal",
