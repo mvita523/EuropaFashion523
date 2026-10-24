@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EuropaFashion · Perfumes</title>
+<meta name="description" content="EuropaFashion: perfumes masculinos e femininos trazidos da Europa (Portugal) para Angola. Venda a revendedores e a clientes finais em Luanda e Uíge.">
+<link rel="icon" href="imagens/logotipo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="topo">
+  <a href="#" class="marca"><img src="imagens/logotipo.jpg" alt="EuropaFashion"><span>EuropaFashion</span></a>
+  <nav>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#revendedores">Revendedores</a>
+    <a href="#contactos">Contactos</a>
+  </nav>
+  <button class="btn-carrinho" id="abrirCarrinho" aria-label="Abrir pedido">Pedido <span id="contador">0</span></button>
+</header>
+
+<section class="destaque">
+  <img src="imagens/logotipo.jpg" alt="Logotipo EuropaFashion" class="destaque-logo">
+  <div>
+    <h1>Perfumes da Europa,<br>de Portugal para Angola</h1>
+    <p>Perfumes masculinos e femininos para revendedores e clientes finais. Estamos em Luanda e no Uíge.</p>
+    <div class="destaque-acoes">
+      <a href="#catalogo" class="btn">Ver catálogo</a>
+      <a href="https://wa.me/244929005501" class="btn btn-claro" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<main id="catalogo" class="catalogo">
+  <div class="catalogo-cabecalho">
+    <h2>Catálogo</h2>
+    <div class="filtros" role="tablist">
+      <button class="ativo" data-filtro="todos">Todos</button>
+      <button data-filtro="feminino">Femininos</button>
+      <button data-filtro="masculino">Masculinos</button>
+      <button data-filtro="corpo">Cuidados do corpo</button>
+    </div>
+  </div>
+  <div class="grelha" id="grelha"></div>
+</main>
+
+<section id="revendedores" class="revenda">
+  <h2>Preço para revendedores</h2>
+  <p>Na compra de <strong>10 unidades ou mais do mesmo perfume</strong>, cada unidade fica <strong>8.000 Kz mais barata</strong>.</p>
+  <p class="exemplo">Exemplo: um perfume de 40.000 Kz passa a 32.000 Kz por unidade. 10 unidades = 320.000 Kz.</p>
+  <p>O desconto é calculado automaticamente no seu pedido.</p>
+</section>
+
+<footer id="contactos" class="rodape">
+  <div>
+    <h2>Contactos</h2>
+    <p>WhatsApp: <a href="https://wa.me/244929005501" target="_blank" rel="noopener">929 005 501</a></p>
+    <p>Chamadas: <a href="tel:+244929005504">929 005 504</a></p>
+    <p>Luanda e Uíge, Angola</p>
+  </div>
+  <div>
+    <h2>Redes sociais</h2>
+    <p><a href="https://www.tiktok.com/@maria.vita523?_r=1&_t=ZS-9Apds10bwgr" target="_blank" rel="noopener">TikTok</a></p>
+    <p><a href="https://www.facebook.com/share/19UxgAJNhX/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></p>
+  </div>
+  <p class="copy">© EuropaFashion</p>
+</footer>
+
+<!-- Detalhe do produto -->
+<dialog id="detalhe"></dialog>
+
+<!-- Pedido -->
+<aside class="painel" id="painel" aria-hidden="true">
+  <div class="painel-topo">
+    <h2>O seu pedido</h2>
+    <button id="fecharCarrinho" aria-label="Fechar">✕</button>
+  </div>
+  <div id="itens"></div>
+  <div class="painel-fim">
+    <p class="total">Total: <strong id="total">0 Kz</strong></p>
+    <button class="btn btn-whats" id="enviarPedido">Enviar pedido pelo WhatsApp</button>
+    <p class="nota">O pedido é enviado para o nosso WhatsApp (929 005 501) para confirmação.</p>
+  </div>
+</aside>
+<div class="sombra" id="sombra"></div>
+
+<script src="produtos.js"></script>
+<script src="loja.js"></script>
+</body>
+</html>
