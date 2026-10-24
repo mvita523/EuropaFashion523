@@ -8,6 +8,36 @@
 
 const PRODUTOS = [
   {
+    id: "red-temptation-sandalwood",
+    tamanho: "50 ml",
+    nome: "Red Zara Temptation & Sandalwood",
+    marca: "Zara",
+    tipo: "Extrait de Parfum",
+    genero: "feminino",
+    preco: 55000,
+    imagem: "imagens/red-temptation-sandalwood.jpg",
+    familia: "Amadeirado âmbar",
+    descricao:
+      "Um extrait de parfum muito concentrado que revela a faceta mais cremosa e sofisticada do acorde Red Zara Temptation. O sândalo lactónico é o protagonista, realçado por pimenta branca e açafrão. Um véu empoado de violeta e íris suaviza o coração, e o âmbar cinzento e a fava tonka criam uma base âmbar profunda e aveludada. Aveludado, profundo e sofisticado.",
+    notas: null,
+    fonte: "https://www.zara.com/uk/en/red-zara-temptation---sandalwood-extrait-de-parfum-50ml-p20110606.html",
+  },
+  {
+    id: "hypnotic-vanilla-extrait-absolu",
+    tamanho: "50 ml",
+    nome: "Hypnotic Vanilla Extrait Absolu",
+    marca: "Zara",
+    tipo: "Parfum",
+    genero: "feminino",
+    preco: 55000,
+    imagem: "imagens/hypnotic-vanilla-extrait-absolu.jpg",
+    familia: "Âmbar gourmand",
+    descricao:
+      "Com uma concentração de 40%, é a versão mais intensa da assinatura Hypnotic Vanilla. Abre com flor de damasco, tem no coração jasmim grandiflorum e termina numa base de sândalo, caramelo quente e baunilha caviar.",
+    notas: { topo: "Flor de damasco", coracao: "Jasmim grandiflorum", fundo: "Sândalo, caramelo quente, baunilha caviar" },
+    fonte: "https://www.zara.com/de/de/hypnotic-vanilla-extrait-absolu-parfum-50-ml-p20110543.html",
+  },
+  {
     id: "cocoa-sunset",
     tamanho: "100 ml",
     nome: "Cocoa Sunset",
