@@ -192,3 +192,27 @@ button, input { -webkit-appearance: none; appearance: none; border-radius: 0; co
 }
 .so-movel { display: none; }
 @media (max-width: 720px) { .so-desktop { display: none; } .so-movel { display: inline; } }
+
+/* Menu do telemóvel */
+.btn-menu { display: none; }
+@media (max-width: 720px) {
+  .marca span { font-size: 1.15rem; }
+  .btn-menu {
+    display: inline-block; background: transparent; color: var(--branco); border: 1px solid var(--branco);
+    padding: .45rem .8rem; font: inherit; font-size: .9rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+  }
+  .topo nav#menuPrincipal {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--preto); border-top: 1px solid #333; padding: .4rem 0; box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  }
+  .topo nav#menuPrincipal.aberto { display: flex; }
+  .topo nav#menuPrincipal a { padding: .9rem 1.2rem; font-size: 1.05rem; opacity: 1; border-bottom: 1px solid #222; }
+  .topo nav#menuPrincipal a:last-child { border-bottom: 0; }
+}
+@media (max-width: 720px) {
+  .topo { gap: .5rem; }
+  .btn-carrinho { white-space: nowrap; padding: .45rem .7rem; }
+}
+@media (max-width: 420px) {
+  .marca span { display: none; } /* em ecrãs estreitos fica só o logotipo */
+}

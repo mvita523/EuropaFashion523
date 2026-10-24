@@ -8,17 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilos.css?v=11">
+<link rel="stylesheet" href="estilos.css?v=12">
 </head>
 <body>
 
 <header class="topo">
   <a href="index.html" class="marca"><img src="imagens/logotipo.jpg" alt="EuropaFashion"><span>EuropaFashion</span></a>
-  <nav>
+  <button class="btn-menu" id="botaoMenu" aria-expanded="false" aria-controls="menuPrincipal">☰ Menu</button>
+  <nav id="menuPrincipal">
     <a href="sobre.html">Quem somos</a>
     <a href="index.html#catalogo">Catálogo</a>
     <a href="index.html#revendedores">Revendedores</a>
     <a href="index.html#contactos">Contactos</a>
+    <a href="politicas.html">Políticas</a>
   </nav>
 </header>
 
@@ -45,5 +47,6 @@
 <footer class="rodape">
   <p class="copy">© EuropaFashion</p>
 </footer>
+<script src="menu.js?v=12"></script>
 </body>
 </html>
