@@ -5,6 +5,11 @@ const MIN_REVENDA = 10;       // unidades do mesmo perfume
 // Desconto de revenda por unidade, conforme o preço do perfume.
 const descontoRevenda = (p) => (p.preco <= 30000 ? 5000 : p.preco <= 40000 ? 6000 : 8000);
 
+// Perfumes com stock neste momento. Os restantes aparecem como "Esgotado" e podem ser encomendados.
+const EM_STOCK = ["malbec-flame", "sevilla-dorada-masculino", "egeo-dolce"];
+const emStock = (p) => EM_STOCK.includes(p.id);
+const AVISO_ENCOMENDA = "Por encomenda: cerca de 1 mês, com 50% pago antes.";
+
 const GENEROS = { feminino: "Feminino", masculino: "Masculino", corpo: "Cuidados do corpo" };
 
 const kz = (v) => v.toLocaleString("pt-PT").replace(/\s/g, ".") + " Kz";
@@ -30,7 +35,7 @@ function desenharCatalogo() {
     (p) =>
       (filtroAtual === "todos" || p.genero === filtroAtual) &&
       palavras.every((w) => textoPesquisavel(p).includes(w))
-  );
+  ).sort((a, b) => emStock(b) - emStock(a)); // disponíveis primeiro
   if (!lista.length) {
     grelha.innerHTML = `<p class="sem-resultados">Nenhum produto encontrado. Não encontrou o perfume que procura? <a href="https://wa.me/244929005501" target="_blank" rel="noopener">Fale connosco pelo WhatsApp</a>: faremos o possível para trazer até si o perfume que deseja.</p>`;
     return;
@@ -38,9 +43,10 @@ function desenharCatalogo() {
   grelha.innerHTML = lista
     .map(
       (p) => `
-    <article class="cartao">
+    <article class="cartao${emStock(p) ? "" : " esgotado"}">
       <button class="cartao-img" data-ver="${p.id}" aria-label="Ver detalhes de ${p.nome}">
         <img src="${p.imagem}" alt="${p.nome}" loading="lazy">
+        <span class="selo ${emStock(p) ? "selo-disponivel" : "selo-esgotado"}">${emStock(p) ? "Disponível" : "Esgotado"}</span>
       </button>
       <div class="cartao-corpo">
         <span class="cartao-marca">${p.marca}</span>
@@ -48,9 +54,10 @@ function desenharCatalogo() {
         <span class="etiqueta">${p.genero ? GENEROS[p.genero] : "Género por confirmar"}${p.tamanho ? ` · ${p.tamanho}` : ""}</span>
         <span class="preco">${kz(p.preco)}</span>
         ${temRevenda(p) ? `<span class="preco-revenda">Revenda (10+ un.): ${kz(p.preco - descontoRevenda(p))}</span>` : ""}
+        ${emStock(p) ? "" : `<span class="por-encomenda">${AVISO_ENCOMENDA}</span>`}
         <div class="cartao-acoes">
           <button data-ver="${p.id}">Detalhes</button>
-          <button class="adicionar" data-adicionar="${p.id}">Adicionar</button>
+          <button class="adicionar" data-adicionar="${p.id}">${emStock(p) ? "Adicionar" : "Encomendar"}</button>
         </div>
       </div>
     </article>`
@@ -101,9 +108,10 @@ function abrirDetalhe(id) {
         <h3>${p.nome}</h3>
         ${descricao}
         <dl>${linhas.join("")}</dl>
+        <p class="${emStock(p) ? "disponivel" : "aviso"}">${emStock(p) ? "Disponível" : `<strong>Esgotado.</strong> ${AVISO_ENCOMENDA}`}</p>
         <p class="preco">${kz(p.preco)}</p>
         ${temRevenda(p) ? `<p class="preco-revenda">Revenda (10 ou mais unidades): ${kz(p.preco - descontoRevenda(p))} por unidade</p>` : ""}
-        <div class="cartao-acoes"><button class="adicionar" data-adicionar="${p.id}">Adicionar ao pedido</button></div>
+        <div class="cartao-acoes"><button class="adicionar" data-adicionar="${p.id}">${emStock(p) ? "Adicionar ao pedido" : "Encomendar"}</button></div>
         ${p.fonte ? `<p class="fonte">Fonte da descrição: <a href="${p.fonte}" target="_blank" rel="noopener">${new URL(p.fonte).hostname}</a></p>` : ""}
       </div>
     </div>`;
@@ -152,6 +160,7 @@ function desenharPedido() {
         <img src="${p.imagem}" alt="">
         <div>
           <div class="item-nome">${p.nome}</div>
+          ${emStock(p) ? "" : `<div class="item-preco">Esgotado · por encomenda (cerca de 1 mês)</div>`}
           <div class="item-preco">${kz(u)} × ${q} = ${kz(u * q)}</div>
           ${!temRevenda(p) ? "" : q >= MIN_REVENDA
             ? `<div class="item-revenda">Preço de revendedor aplicado (−${kz(descontoRevenda(p))}/un.)</div>`
@@ -188,7 +197,7 @@ document.getElementById("enviarPedido").addEventListener("click", () => {
   const linhas = ids.map((id) => {
     const p = porId(id), q = pedido[id], u = precoUnitario(p, q);
     total += u * q;
-    return `• ${q} × ${p.nome} (${p.marca}) — ${kz(u)}/un.${u < p.preco ? " [revendedor]" : ""} = ${kz(u * q)}`;
+    return `• ${q} × ${p.nome} (${p.marca}) — ${kz(u)}/un.${u < p.preco ? " [revendedor]" : ""}${emStock(p) ? "" : " [por encomenda]"} = ${kz(u * q)}`;
   });
   const texto = `Olá EuropaFashion! Gostaria de fazer este pedido:\n\n${linhas.join("\n")}\n\nTotal: ${kz(total)}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank");

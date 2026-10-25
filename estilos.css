@@ -216,3 +216,12 @@ button, input { -webkit-appearance: none; appearance: none; border-radius: 0; co
 @media (max-width: 420px) {
   .marca span { display: none; } /* em ecrãs estreitos fica só o logotipo */
 }
+
+/* Stock: selo na imagem e aviso de encomenda */
+.cartao-img { position: relative; }
+.selo { position: absolute; top: .5rem; left: .5rem; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: .2rem .5rem; }
+.selo-disponivel { background: var(--whats); color: #fff; }
+.selo-esgotado { background: var(--preto); color: #fff; }
+.cartao.esgotado .cartao-img img { opacity: .55; }
+.por-encomenda { font-size: .75rem; color: var(--cinza); }
+.disponivel { color: var(--whats); font-weight: 600; font-size: .9rem; }
