@@ -6,7 +6,7 @@ const MIN_REVENDA = 10;       // unidades do mesmo perfume
 const descontoRevenda = (p) => (p.preco <= 30000 ? 5000 : p.preco <= 40000 ? 6000 : 8000);
 
 // Perfumes com stock neste momento. Os restantes aparecem como "Esgotado" e podem ser encomendados.
-const EM_STOCK = ["malbec-flame", "sevilla-dorada-masculino", "egeo-dolce"];
+const EM_STOCK = ["malbec-flame", "sevilla-dorada-masculino", "egeo-dolce", "malbec-black", "malbec-gold", "nativa-spa-quinoa"];
 const emStock = (p) => EM_STOCK.includes(p.id);
 const AVISO_ENCOMENDA = "Por encomenda: cerca de 1 mês, com 50% pago antes.";
 
